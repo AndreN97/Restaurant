@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading;
+using Restaurant.Domain;
 using static System.Console;
 
 namespace Restaurant
@@ -7,7 +10,7 @@ namespace Restaurant
     {
         static void Main(string[] args)
         {
-
+            RestaurantX restaurant = new RestaurantX("MaxDonalds");
             bool shouldRun = true;
 
             while (shouldRun)
@@ -23,6 +26,23 @@ namespace Restaurant
                 switch (keyPressed.Key)
                 {
                     case ConsoleKey.D1:
+
+                        Clear();
+
+                        Write("Dish: ");
+                        string dish = ReadLine();
+
+                        Write("Table: ");
+                        string table = ReadLine();
+
+                        Order order = new Order(dish, table);
+
+                        restaurant.RegisterOrder(order);
+
+                        Clear();
+
+                        WriteLine("Order registered");
+                        Thread.Sleep(2000);
 
                         break;
 
